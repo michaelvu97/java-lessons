@@ -25,7 +25,7 @@ public class Main {
   /////////////////////////////////////////////////////////////////////////////
   //                               Lesson1
   /////////////////////////////////////////////////////////////////////////////
-  private static void RunLesson1(){
+  private void RunLesson1() {
     //
     //                             MEMORY
     // ------------------------------------------------------------------------
@@ -97,6 +97,183 @@ public class Main {
     //
     //                             WHY JAVA?
     // ------------------------------------------------------------------------
+    // There are many different programming languages available. What does Java
+    // have to offer?
+    //
+    // Learning Curve:
+    //   Java is simple, consistent, and approachable.
+    //
+    //   Using it effectively can take some practice and conceptual learning.
+    //
+    //   It provides a useful abstraction of the "under the hood" workings 
+    //   of a compute program, and enables the programmer to work effectively
+    //   within the constraints of the language's capabilities and strengths.
+    //
+    // Garbage Collection:
+    //   If you allocate a part of your program memory (for example, to save
+    //   a variable), it must eventually be freed up again. If it is not,
+    //   the program is "leaking memory" and will eventually run out.
+    //
+    //   Java's runtime (ALL the code that executes when you run your Java 
+    //   program) includes a "garbage collector" process, which will free up
+    //   memory when it is no longer being used.
+    //
+    //   Note that it is still possible to run out of program memory even when
+    //   the GC is used (for example, creating an infinite number of objects
+    //   would eventually deplete the program memory).
+    //
+    // Object-Oriented Programming:
+    //   OOP is a way of designing programs.
+    //
+    //   The programmer writes `class` code that define how an `object` should 
+    //   behave.
+    //
+    //   The program generates an `instance` of the `class`, and writes its 
+    //   instance data to memory.
+    //
+    //   An object instance's `state` can change over time.
+    //
+    //   The main advantage is that one programmer can use another programmer's
+    //   class without having to fully understand _how_ it actually works.
+    //  
+    //   This is only usefuly if the _behaviour_ of a class is well-documented
+    //   and understandable.
+    //  
     // 
+    //
+    //                       STORING DATA IN MEMORY
+    // ------------------------------------------------------------------------
+    // All data in a Java program must be saved as a sequence of binary data.
+    // What are the methods of encoding different information?
+    //
+    // Primitives vs References:
+    //   If a variable contains a "Primitive Value", it means the variable's 
+    //   bits store the raw value of the underlying data. This could be a 
+    //   number, boolean, or anything else that can fit in ~8-32 bits.
+    //
+    //   If a variable contains a "Reference Value", it means that the 
+    //   variable's bits store the **address** of a region of memory. The
+    //   underlying data we want can be retrieved by reading from memory
+    //   at that address.
+    //   
+    //
+    // Boolean (Primitive):
+    //   A `boolean` is a true or false (1 or 0) value. It can be stored as a 
+    //   single bit of information.
+    boolean isLearningFun = true;
+
+    // Numbers (Primitive):
+    //   Numbers are sequence of bits that encode a number. 
+    //  
+    //   Integers can be stored as a base 2 representation of an integer.
+    //     E.x 01010 would be a 5-bit representation of the number 9.
+    //
+    //   Floating point numbers (non-integer approximations of real numbers)
+    //   can be stored similar to scientific notation: N bits for the
+    //   significant digits and M bits for the base 10 exponent. 
+    //   The number 2.017 x 10 ^ 25 could be encoded as [2017, 25], and then
+    //   those binary numbers written to memory.
+    int numberOfOranges = 4424;
+    float orangesPerPerson = 1.02E4f;
+
+    // Characters (Primitive):
+    //   A character is a single letter, e.g. 'k'.
+    //  
+    //   One simple way that characters are encoded into memory is using the
+    //   ASCII dictionary, which contains letters, numbers, and special 
+    //   characters. 
+    //
+    //  Each ASCII character can be encoded in 7 bits. This means that a
+    //  character could be saved as a 7 bit integer.
+    char thirdLetterOfTheAlphabet = 'c';
+
+    //  Arrays (Reference):
+    //    An array is a list of some data type. It is a sequence of bits in 
+    //    memory, and contains N objects. If each object is M bits, then the
+    //    whole array is representable as sequence of NxM bits.
+    //
+    //    Each item in the array can be located at the starting address plus
+    //    an offset of (i x M bits), where i is the index of the item we want.
+    int[] agesOfMyFriends = { 16, 18, 19 };
+    System.out.println(agesOfMyFriends[0]); // Arrays start at the 0th element.
+    System.out.println(agesOfMyFriends[1]);
+    System.out.println(agesOfMyFriends[2]);
+    // What would happen if we tried to access agesOfMyFriends[3] ?
+
+    char[] myNewArray = new char[10];
+    //
+    //   In the above statement:
+    //     "new" means: reserve a section of memory for this array.
+    //     [10] means: allocate 10 elements
+    //     char means: each element of the array is a character data type
+    //   
+    //   After that line runs, what will be stored in the myNewArray variable?
+    //
+    //   The myNewArray variable is a reference. It is implemented by storing
+    //   an address as an integer. In this case, it will be set to the address
+    //   of the:
+    //     *region of memory that was dynamically allocated for the array*.
+    //
+    //   The variable myNewArray does not contain the array data, it simply
+    //   points to the location in memory where the array data is stored.
+    //
+
+    int[] arrayA = { 1, 2, 3 };
+    int[] arrayB = { 4, 5, 6 };
+
+    int[] arrayC = arrayA;
+
+    // How many bits is required to store the arrayC variable?
+    // What values is stored in the arrayC variable?
+
+    arrayC = arrayB; // What happens here?
+    
+    // Strings (Reference):
+    // 
+    // 
+
+    // Objects (Reference):
+    //   An object is a collection of data "fields" which are grouped together
+    //   and stored in memory.
+    //
+    //   For example, if you had a `Human` object, it might have an integer
+    //   `height` field, and a integer `age` field.
+    // 
+    //   Under the hood, an object is actually treated pretty similarly to an
+    //   array.
+    //   A naive approach to saving our `Human` object to memory could look
+    //   like:
+    int[] someHuman = { 155, 24 };
+    //   The above line writes the values 155, 24 to an array in memory.
+    //   If we _knew_ that the first item of a `human` is the height, and the
+    //   second item the `age`, we could retrieve the values from memory:
+    int heightOfThatHuman = someHuman[0];
+    int ageOfThatHuman = someHuman[1];
+    //   We could also overwrite the values.
+    someHuman[0] = 170; // update height
+    someHuman[1] = 25; // update age
+    //   As you can guess, this approach has some major problems, to name a
+    //   few:
+    //     It does not extend well to fields with different data types.
+    //     It is hard to keep track of (from the programmer's perspective).
+    //     It is hard to read.
+    //
+    //   Thankfully, Java allows us to abstract this away using `Objects`.
+    //   Let's define our human as a class (we will explain this in more depth
+    //   later). See: `class Human` below.
+    Human michael = new Human();
+    michael.age = 24;
+    michael.height = 170;
+
+    System.out.println(
+      "Michael is " 
+        + michael.age + " years old and " 
+        + michael.height + " cm tall"
+    );
+  }
+
+  class Human {
+    public int height;
+    public int age;
   }
 }
