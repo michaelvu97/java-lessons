@@ -160,6 +160,7 @@ public class Main {
     // Boolean (Primitive):
     //   A `boolean` is a true or false (1 or 0) value. It can be stored as a 
     //   single bit of information.
+
     boolean isLearningFun = true;
 
     // Numbers (Primitive):
@@ -173,6 +174,7 @@ public class Main {
     //   significant digits and M bits for the base 10 exponent. 
     //   The number 2.017 x 10 ^ 25 could be encoded as [2017, 25], and then
     //   those binary numbers written to memory.
+
     int numberOfOranges = 4424;
     float orangesPerPerson = 1.02E4f;
 
@@ -185,6 +187,7 @@ public class Main {
     //
     //  Each ASCII character can be encoded in 7 bits. This means that a
     //  character could be saved as a 7 bit integer.
+
     char thirdLetterOfTheAlphabet = 'c';
 
     //  Arrays (Reference):
@@ -194,6 +197,7 @@ public class Main {
     //
     //    Each item in the array can be located at the starting address plus
     //    an offset of (i x M bits), where i is the index of the item we want.
+
     int[] agesOfMyFriends = { 16, 18, 19 };
     System.out.println(agesOfMyFriends[0]); // Arrays start at the 0th element.
     System.out.println(agesOfMyFriends[1]);
@@ -201,7 +205,7 @@ public class Main {
     // What would happen if we tried to access agesOfMyFriends[3] ?
 
     char[] myNewArray = new char[10];
-    //
+
     //   In the above statement:
     //     "new" means: reserve a section of memory for this array.
     //     [10] means: allocate 10 elements
@@ -216,7 +220,6 @@ public class Main {
     //
     //   The variable myNewArray does not contain the array data, it simply
     //   points to the location in memory where the array data is stored.
-    //
 
     int[] arrayA = { 1, 2, 3 };
     int[] arrayB = { 4, 5, 6 };
@@ -229,8 +232,32 @@ public class Main {
     arrayC = arrayB; // What happens here?
     
     // Strings (Reference):
-    // 
-    // 
+    //   A string is conceptually an array of characters.
+    //   Strings are typically used for managing text.
+    //
+    //   Java's `String` class essentially just manages a `char` array, and
+    //   provides some useful functionality as well.
+    //
+    //   Since `Strings` are a reference type, the string data is stored in
+    //   memory, and a `String` variable is an address which points to the 
+    //   memory region.
+
+    String s = "This is a string";
+
+    char[] someCharArray = {' ', 't', 'o', 'o', '!'};
+    String too = new String(someCharArray);
+
+    System.out.println(s + too);
+
+    String strA = "abc";
+    String strB = "def";
+
+    // What happens in these two lines?
+    String c = strA;
+    strA = "ghi";
+
+    // What will be printed?
+    System.out.println("C = " + c);
 
     // Objects (Reference):
     //   An object is a collection of data "fields" which are grouped together
@@ -243,15 +270,21 @@ public class Main {
     //   array.
     //   A naive approach to saving our `Human` object to memory could look
     //   like:
+
     int[] someHuman = { 155, 24 };
+
     //   The above line writes the values 155, 24 to an array in memory.
     //   If we _knew_ that the first item of a `human` is the height, and the
     //   second item the `age`, we could retrieve the values from memory:
+
     int heightOfThatHuman = someHuman[0];
     int ageOfThatHuman = someHuman[1];
+
     //   We could also overwrite the values.
+
     someHuman[0] = 170; // update height
     someHuman[1] = 25; // update age
+
     //   As you can guess, this approach has some major problems, to name a
     //   few:
     //     It does not extend well to fields with different data types.
@@ -261,18 +294,23 @@ public class Main {
     //   Thankfully, Java allows us to abstract this away using `Objects`.
     //   Let's define our human as a class (we will explain this in more depth
     //   later). See: `class Human` below.
+
     Human michael = new Human();
-    michael.age = 24;
     michael.height = 170;
+    michael.age = 24;
 
     System.out.println(
       "Michael is " 
         + michael.age + " years old and " 
         + michael.height + " cm tall"
     );
+
   }
 
   class Human {
+    // "public" means the field can be accessed
+    // "int" specifies that the field is an integer
+    // "height" is the name of the field.
     public int height;
     public int age;
   }
