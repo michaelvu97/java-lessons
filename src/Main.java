@@ -2,26 +2,10 @@ import java.util.*;
 
 public class Main {
   public static void main(String[] args) {
-    if (args.length != 1)
-      throw new IllegalArgumentException("Must specify a lesson to run.");
-    
-    String lessonName = args[0];
-
     Main main = new Main();
-    main.RunLesson(lessonName);
+    main.RunLesson2();
   }
   
-  private void RunLesson(String name) {
-    if (name.equals("lesson1")) {
-      RunLesson1();
-      return;
-    }
-
-
-
-    throw new IllegalArgumentException("Lesson " + name + " not found");
-  }
-
   /////////////////////////////////////////////////////////////////////////////
   //                               Lesson1
   /////////////////////////////////////////////////////////////////////////////
@@ -313,5 +297,87 @@ public class Main {
     // "height" is the name of the field.
     public int height;
     public int age;
+  }
+
+  /////////////////////////////////////////////////////////////////////////////
+  //                               Lesson1
+  /////////////////////////////////////////////////////////////////////////////
+  private void RunLesson2() {
+    // 1. Declare an integer variable named "someInteger" and assign it the 
+    //    value -200
+
+
+    // 2. Create a String variable named "myName" and assign your name as its
+    //    value.
+    
+
+    // 3. Create an array of booleans named "myBoolArray". All values should
+    //    start as "false".
+    
+
+    // 4. Use a "for" loop to set all values of "myBoolArray" to true.
+
+
+    // 5. Use a "for" loop to set "myBoolArray" to the following pattern:
+    //    [false, true, false, true, ...]
+
+
+    // 6. Below is the function "AllTrue", complete the function and write
+    //    test code to ensure it works correctly.
+    TestAllTrue();
+
+    // 7. Below is the function "MaxAge", complete the function and write test
+    //    code to ensure it works correctly.
+    TestMaxAge();
+
+    // 8. Below is the function "HeightOfAdults", complete the function and
+    //    write test code to ensure it works correctly.
+    TestHeightOfAdults();
+
+    // 9. Below is the function "ParseName", complete the function and write
+    //    test code to ensure it works correctly.
+    TestParseName();
+  }
+
+  private boolean AllTrue(boolean[] arr) {
+    // Returns true if all elements of "arr" are "true".
+    return false; // TODO: fill out this method.
+  }
+
+  private void TestAllTrue() {
+    // Tests the AllTrue method for correctness.
+    // TODO: fill out this method.
+  }
+
+  private int MaxAge(Human[] humans) {
+    // Returns the maximum "age" of all elements of "humans".
+    return -1; // TODO: fill out this method.
+  }
+
+  private void TestMaxAge() {
+    // Tests the MaxAge method for correctness.
+    // TODO: fill out this method.
+  }
+
+  private int[] HeightOfAdults(Human[] humans) {
+    // Returns the heights of all elements of "humans" that are adults.
+    return null; // TODO: fill out this method.
+  }
+
+  private void TestHeightOfAdults() {
+    // Tests the HeightOfAdults method for correctness.
+    // TODO: fill out this method.
+  }
+
+  private String[] ParseName(String strEncoded) {
+    // Parses out the first and last names and returns as an array.
+    // Takes a string in the form "<lastName>,<firstName>"
+    // Returns [<firstName>, <lastName>]
+    return null; // TODO: fill out this method.
+  }
+
+  private void TestParseName() {
+    // Tests the ParseName method for correctness.
+    // TODO: fill out this method
   }
 }
